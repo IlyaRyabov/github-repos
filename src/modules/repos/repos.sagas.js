@@ -1,8 +1,8 @@
 import {takeLatest, call, put} from 'redux-saga/effects';
 import {mainApi} from 'api/instance';
 import {REPOS} from 'constants/endpoints';
-import {GET_REPOS_DATA, REPOS_PER_PAGE} from './repos.constants';
-import {setIsReposLoading, setReposData} from './repos.actions';
+import {GET_REPOS_DATA} from './repos.constants';
+import {setIsReposLoading, setReposData, setReposPagination} from './repos.actions';
 import {getReposRequestParams} from "./repos.helpers";
 
 function* getRepos({page, search}) {
@@ -13,15 +13,8 @@ function* getRepos({page, search}) {
             getReposRequestParams(search, page),
         );
 
-        yield put(setReposData({
-            repos: data.items,
-            pagination: {
-                page,
-                perPage: REPOS_PER_PAGE,
-                totalCount: data.total_count,
-            },
-        }));
-
+        yield put(setReposData(data.items));
+        yield put(setReposPagination(page, data.total_count));
         yield put(setIsReposLoading(false));
     } catch(e) {
         alert(e.response.data.message);
