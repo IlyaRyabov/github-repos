@@ -1,0 +1,5 @@
+export const REPOS_PER_PAGE = 20;
+
+export const SET_IS_REPOS_LOADING = 'SET_IS_REPOS_LOADING';
+export const GET_REPOS_DATA = 'GET_REPOS_DATA';
+export const SET_REPOS_DATA = 'SET_REPOS_DATA';
