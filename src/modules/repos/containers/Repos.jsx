@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Wrapper} from 'ui/layout/Wrapper';
 import {Loader} from 'ui/loader/Loader';
-import {getReposData} from '../repos.actions';
+import {getRepos} from '../repos.slice';
 import * as selectors from '../repos.selectors';
 import {ReposList} from '../components/ReposList';
 import {ReposPagination} from './Pagination';
@@ -17,7 +17,7 @@ export function Repos() {
     const {page} = useSelector(selectors.getReposPagination);
 
     useEffect(() => {
-        dispatch(getReposData(page, search));
+        dispatch(getRepos({page, search}));
     }, [dispatch, page, search]);
 
     if (isLoading) {

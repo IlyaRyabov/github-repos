@@ -1,6 +1,6 @@
 import {useCallback} from 'react';
 import {useDispatch} from 'react-redux';
-import {setReposPagination, setReposSearch} from '../repos.actions';
+import {setReposSearch, setReposPagination} from '../repos.slice';
 import {SearchReposInput as SearchReposInputComponent} from '../components/SearchInput';
 
 export function SearchReposInput() {

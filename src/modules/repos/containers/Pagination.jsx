@@ -2,7 +2,7 @@ import {useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Pagination} from 'ui/pagination/Pagination';
 import * as selectors from '../repos.selectors';
-import {setReposPagination} from '../repos.actions';
+import {setReposPagination} from '../repos.slice';
 
 export function ReposPagination() {
     const dispatch = useDispatch();

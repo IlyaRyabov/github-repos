@@ -1,5 +1,4 @@
 import {Repos} from './modules/repos/containers/Repos';
-import './App.css';
 
 function App() {
     return (

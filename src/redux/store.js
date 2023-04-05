@@ -1,16 +1,8 @@
-import {createStore, applyMiddleware} from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import {composeWithDevTools} from '@redux-devtools/extension';
-import {rootReducer} from './state/reducers';
-import {rootSaga} from './sagas';
+import {configureStore} from '@reduxjs/toolkit';
+import {reposReducer} from '../modules/repos/repos.slice';
 
-const sagaMiddleware = createSagaMiddleware();
-
-export const store = createStore(
-    rootReducer,
-    composeWithDevTools(
-        applyMiddleware(sagaMiddleware),
-    ),
-);
-
-sagaMiddleware.run(rootSaga);
+export const store = configureStore({
+    reducer: {
+        repos: reposReducer,
+    },
+});
